@@ -1,0 +1,14 @@
+{
+  "name": "onthisday",
+  "version": "1.0.0",
+  "description": "Sends me a gist of what happened on this day",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Saurabh Sood",
+  "license": "MIT",
+  "dependencies": {
+    "serverless-python-requirements": "^4.1.1"
+  }
+}

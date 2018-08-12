@@ -1,0 +1,19 @@
+# serverless.yaml
+
+
+service: onthisday
+
+plugins:
+  - serverless-python-requirements
+
+custom:
+  pythonRequirements:
+    dockerizePip: true
+
+provider:
+  name: aws
+  runtime: python3.6
+
+functions:
+  getnews:
+    handler: handler.main
