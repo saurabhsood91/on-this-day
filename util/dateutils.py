@@ -1,5 +1,9 @@
 import datetime
 
 
+def now():
+    return datetime.datetime.now()
+
+
 def get_formatted_date() -> str:
-    return datetime.datetime.now().strftime('%d-%b')
+    return now().strftime('%d-%b')
