@@ -1,6 +1,3 @@
-import pytest
-import os
-
 from unittest import mock, TestCase
 
 from handler import main
