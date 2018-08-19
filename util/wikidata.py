@@ -2,11 +2,13 @@ from bs4 import BeautifulSoup, NavigableString, Tag
 
 import requests
 
-def _get_single_news_item(item):
+
+def _get_single_news_item(item: str) -> str:
     contents = []
     for child in item.children:
         contents.append(str(child))
     return ''.join(contents).replace('href="', 'href="https://en.wikipedia.org')
+
 
 def fetch_events_on_day():
     html_doc = requests.get('https://en.wikipedia.org').text

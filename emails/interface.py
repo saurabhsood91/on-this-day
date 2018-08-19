@@ -1,37 +1,14 @@
+import boto3
+
+from botocore.exceptions import ClientError
+from typing import List
+
+from . import AWS_REGION, RECIPIENT, SENDER, CHARSET, SUBJECT, EMAIL_TEMPLATE
 from util.dateutils import get_formatted_date
 
-import boto3
-import os
-from botocore.exceptions import ClientError
 
-
-EMAIL_TEMPLATE = """
-<html>
-    <head></head>
-    <body>
-        <h1>On this day today: {current_date}</h1>
-        <div>
-            {content}
-        </div>
-    </body>
-</html>
-"""
-
-SENDER = RECIPIENT = os.environ.get('email')
-
-AWS_REGION = os.environ.get('aws_region')
-SUBJECT = 'On this day today...'
-CHARSET = 'UTF-8'
-
-
-def _format_content(content):
+def _format_content(content: List) -> str:
     return '<br /><br />'.join(content)
-
-
-def render_email_template(content):
-    current_date = get_formatted_date()
-    formatted_content = _format_content(content)
-    return EMAIL_TEMPLATE.format(current_date=current_date, content=formatted_content)
 
 
 def send_email(body):
@@ -62,3 +39,9 @@ def send_email(body):
         print(e.response['Error']['Message'])
     else:
         print('Email successfully sent!, {}'.format(response['MessageId']))
+
+
+def render_email_template(content):
+    current_date = get_formatted_date()
+    formatted_content = _format_content(content)
+    return EMAIL_TEMPLATE.format(current_date=current_date, content=formatted_content)
