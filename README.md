@@ -13,3 +13,10 @@ The idea was to learn more about serverless framework, and a bit of AWS configur
 - AWS
   - Lambda
   - SES (for sending an email)
+
+
+### Testing
+- create a virtualenv and activate it
+- install requirements
+    - `pip install -r requirements.txt`
+- Run `make test`
